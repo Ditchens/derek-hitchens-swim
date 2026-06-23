@@ -161,6 +161,57 @@
   .footer-logo span { color: var(--gold); opacity: 0.6; }
   footer p { font-size: 12px; color: rgba(200,232,245,0.2); }
 
+
+  /* LANGUAGE SWITCHER */
+  .lang-switcher {
+    position: relative;
+    display: inline-block;
+    margin-left: 20px;
+  }
+  .lang-btn {
+    background: rgba(200,232,245,0.1);
+    border: 1px solid rgba(200,232,245,0.25);
+    color: rgba(248,249,251,0.75);
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s;
+  }
+  .lang-btn:hover { background: rgba(200,232,245,0.2); color: var(--white); }
+  .lang-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    background: var(--navy);
+    border: 1px solid rgba(200,232,245,0.15);
+    border-radius: 6px;
+    overflow: hidden;
+    min-width: 160px;
+    z-index: 999;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+  .lang-dropdown.open { display: block; }
+  .lang-option {
+    display: block;
+    width: 100%;
+    padding: 10px 16px;
+    background: none;
+    border: none;
+    color: rgba(200,232,245,0.7);
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .lang-option:hover { background: rgba(200,232,245,0.08); color: var(--white); }
+  .lang-option.active { color: var(--gold); font-weight: 600; }
+
   /* MOBILE */
   @media (max-width: 768px) {
     nav { padding: 14px 20px; }
@@ -184,11 +235,23 @@
 <nav>
   <div class="nav-logo">DEREK <span>HITCHENS</span></div>
   <div>
-    <a href="#about">About</a>
-    <a href="#services">Lessons</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#faq">FAQ</a>
-    <a href="https://www.youtube.com/@Hitchens_Swims/videos" target="_blank">Watch Me Swim</a><a href="#booking" class="nav-book">Book Now</a>
+    <a href="#about" data-i18n="nav_about">About</a>
+    <a href="#services" data-i18n="nav_lessons">Lessons</a>
+    <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
+    <a href="#faq" data-i18n="nav_faq">FAQ</a>
+    <a href="https://www.youtube.com/@Hitchens_Swims/videos" target="_blank" data-i18n="nav_watch">Watch Me Swim</a><a href="#booking" class="nav-book" data-i18n="nav_book">Book Now</a>
+
+    <div class="lang-switcher">
+      <button class="lang-btn" onclick="toggleLangDropdown()">🌐 EN</button>
+      <div class="lang-dropdown" id="langDropdown">
+        <button class="lang-option active" onclick="setLang('en')">🇺🇸 English</button>
+        <button class="lang-option" onclick="setLang('zh')">🇨🇳 简体中文</button>
+        <button class="lang-option" onclick="setLang('es')">🇲🇽 Español</button>
+        <button class="lang-option" onclick="setLang('ko')">🇰🇷 한국어</button>
+        <button class="lang-option" onclick="setLang('vi')">🇻🇳 Tiếng Việt</button>
+        <button class="lang-option" onclick="setLang('ja')">🇯🇵 日本語</button>
+      </div>
+    </div>
   </div>
 </nav>
 
@@ -203,18 +266,18 @@
 
   <div class="hero-inner">
     <div class="hero-text">
-      <p class="hero-eyebrow">Private Swim Coaching · Orange County, CA</p>
+      <p class="hero-eyebrow" data-i18n="hero_eyebrow">Private Swim Coaching · Orange County, CA</p>
       <h1>Train with<br><em>elite-level</em><br>instruction.</h1>
-      <p class="hero-sub">NCAA Division I swimmer at Columbia University. 2025 OC Swimmer of the Year. 15 years in the water, now coaching private students this summer in Irvine.</p>
+      <p class="hero-sub" data-i18n="hero_sub">NCAA Division I swimmer at Columbia University. 2025 OC Swimmer of the Year. 15 years in the water, now coaching private students this summer in Irvine.</p>
       <div class="hero-ctas">
-        <a href="#booking" class="btn-primary">Book a Lesson</a>
-        <a href="#about" class="btn-outline">About Me</a>
+        <a href="#booking" class="btn-primary" data-i18n="hero_btn1">Book a Lesson</a>
+        <a href="#about" class="btn-outline" data-i18n="hero_btn2">About Me</a>
       </div>
       <div class="stat-strip">
-        <div class="stat-item"><div class="stat-num">14×</div><div class="stat-label">Scholastic All-American</div></div>
-        <div class="stat-item"><div class="stat-num">OT</div><div class="stat-label">Olympic Trials Standards</div></div>
-        <div class="stat-item"><div class="stat-num">300+</div><div class="stat-label">Hours Coached</div></div>
-        <div class="stat-item"><div class="stat-num">#1</div><div class="stat-label">OC Swimmer of the Year '25</div></div>
+        <div class="stat-item"><div class="stat-num">14×</div><div class="stat-label" data-i18n="stat1_label">Scholastic All-American</div></div>
+        <div class="stat-item"><div class="stat-num">OT</div><div class="stat-label" data-i18n="stat2_label">Olympic Trials Standards</div></div>
+        <div class="stat-item"><div class="stat-num">300+</div><div class="stat-label" data-i18n="stat3_label">Hours Coached</div></div>
+        <div class="stat-item"><div class="stat-num">#1</div><div class="stat-label" data-i18n="stat4_label">OC Swimmer of the Year '25</div></div>
       </div>
     </div>
 
@@ -237,8 +300,8 @@
           alt="Derek Hitchens swimmer" />
       </div>
       <div class="about-content">
-        <p class="section-eyebrow">About Me</p>
-        <h2 class="section-title">Built for this, in and out of the water.</h2>
+        <p class="section-eyebrow" data-i18n="about_eyebrow">About Me</p>
+        <h2 class="section-title" data-i18n="about_title">Built for this, in and out of the water.</h2>
         <p class="section-lead" style="margin-bottom:16px;">
           I've been in the water since I was 5 years old, nearly 15 years of competitive swimming that took me from age group meets in Irvine all the way to USA Swimming National Championships and the Ivy League.
         </p>
@@ -260,7 +323,7 @@
 <!-- CREDENTIALS -->
 <section id="credentials">
   <div class="container">
-    <p class="section-eyebrow">Credentials</p>
+    <p class="section-eyebrow" data-i18n="creds_eyebrow">Credentials</p>
     <h2 class="section-title" style="color:var(--white)">The résumé speaks for itself.</h2>
     <p class="section-lead">I've competed at every level of American swimming, from high school championships to national meets, and I bring that experience directly to your swimmer.</p>
 
@@ -336,8 +399,8 @@
 <!-- SERVICES -->
 <section id="services">
   <div class="container">
-    <p class="section-eyebrow">Lesson Types</p>
-    <h2 class="section-title">Every swimmer, every level.</h2>
+    <p class="section-eyebrow" data-i18n="services_eyebrow">Lesson Types</p>
+    <h2 class="section-title" data-i18n="services_title">Every swimmer, every level.</h2>
     <p class="section-lead">From a child's first lap to competitive race prep, I tailor every lesson to where you are and where you want to go.</p>
     <div class="services-grid">
       <div class="service-card"><div class="service-icon">🏊</div><h3>Learn-to-Swim</h3><p>Water safety, comfort in the water, and the building blocks of every stroke, taught with patience and encouragement.</p></div>
@@ -353,8 +416,8 @@
 <!-- PRICING -->
 <section id="pricing">
   <div class="container">
-    <p class="section-eyebrow">Rates</p>
-    <h2 class="section-title">Simple, transparent pricing.</h2>
+    <p class="section-eyebrow" data-i18n="pricing_eyebrow">Rates</p>
+    <h2 class="section-title" data-i18n="pricing_title">Simple, transparent pricing.</h2>
     <p class="section-lead">No hidden fees. Choose the lesson length that fits your swimmer's goals and attention span.</p>
     <div class="pricing-grid">
       <div class="price-card">
@@ -404,8 +467,8 @@
 <!-- TESTIMONIALS -->
 <section id="testimonials" style="background:#f0f6fb; padding:96px 40px;">
   <div class="container">
-    <p class="section-eyebrow">Testimonials</p>
-    <h2 class="section-title">What parents say.</h2>
+    <p class="section-eyebrow" data-i18n="testimonials_eyebrow">Testimonials</p>
+    <h2 class="section-title" data-i18n="testimonials_title">What parents say.</h2>
 
     <div style="max-width:800px; display:flex; flex-direction:column; gap:20px;">
 
@@ -437,8 +500,8 @@
 <!-- FAQ -->
 <section id="faq">
   <div class="container">
-    <p class="section-eyebrow">FAQ</p>
-    <h2 class="section-title">Common questions.</h2>
+    <p class="section-eyebrow" data-i18n="faq_eyebrow">FAQ</p>
+    <h2 class="section-title" data-i18n="faq_title">Common questions.</h2>
 
     <div class="faq-list">
       <div class="faq-item">
@@ -480,8 +543,8 @@
 <!-- AREA -->
 <section id="area">
   <div class="container">
-    <p class="section-eyebrow">Service Area</p>
-    <h2 class="section-title">Available across Orange County.</h2>
+    <p class="section-eyebrow" data-i18n="area_eyebrow">Service Area</p>
+    <h2 class="section-title" data-i18n="area_title">Available across Orange County.</h2>
     <p class="section-lead">Lessons are held at Forest Glen Pool in Irvine. Conveniently located and easily accessible from across Orange County.</p>
     <div class="area-tags">
       <span class="area-tag">Irvine</span><span class="area-tag">Tustin</span>
@@ -622,8 +685,8 @@
 <!-- BOOKING -->
 <section id="booking">
   <div class="container">
-    <p class="section-eyebrow">Get Started</p>
-    <h2 class="section-title" style="color:var(--white)">Ready to book?</h2>
+    <p class="section-eyebrow" data-i18n="booking_eyebrow">Get Started</p>
+    <h2 class="section-title" style="color:var(--white)" data-i18n="booking_title">Ready to book?</h2>
     <p class="section-lead">Spots fill up fast during summer. Reach out today to lock in your swimmer's first lesson.</p>
 
     <div class="booking-grid">
@@ -633,14 +696,14 @@
           <li><div class="step-num">2</div><div class="step-text"><strong>Pick your time</strong>, choose from available slots using the booking calendar.</div></li>
           <li><div class="step-num">3</div><div class="step-text"><strong>Confirm and swim</strong>, show up to Forest Glen Pool and payment is collected at the lesson via Venmo, Zelle, or cash.</div></li>
         </ul>
-        <a href="mailto:HitchensDerek06@gmail.com" class="btn-primary" style="width:100%;text-align:center;display:block;">Email to Book</a>
+        <a href="mailto:HitchensDerek06@gmail.com" class="btn-primary" style="width:100%;text-align:center;display:block;" data-i18n="email_btn">Email to Book</a>
         <p class="contact-line">Or text directly: <a href="tel:+17143214889">(714) 321-4889</a></p>
       </div>
 
       <div class="calendly-box">
-        <h3>Book a time online</h3>
-        <p>Use the calendar to pick a slot that works for you. No back-and-forth needed.</p>
-        <a href="https://calendly.com/hitchensderek06" target="_blank" class="btn-calendly">📅 View Available Times</a>
+        <h3 data-i18n="calendly_title">Book a time online</h3>
+        <p data-i18n="calendly_sub">Use the calendar to pick a slot that works for you. No back-and-forth needed.</p>
+        <a href="https://calendly.com/hitchensderek06" target="_blank" class="btn-calendly" data-i18n="calendly_btn">📅 View Available Times</a>
         
       </div>
     </div>
@@ -655,5 +718,90 @@
   <p style="margin-top:6px;"><a href="tel:+17143214889" style="color:rgba(200,232,245,0.3);text-decoration:none;">(714) 321-4889</a> · <a href="mailto:HitchensDerek06@gmail.com" style="color:rgba(200,232,245,0.3);text-decoration:none;">HitchensDerek06@gmail.com</a></p>
 </footer>
 
+
+<script>
+const translations = {"en": {"nav_about": "About", "nav_lessons": "Lessons", "nav_pricing": "Pricing", "nav_faq": "FAQ", "nav_watch": "Watch Me Swim", "nav_book": "Book Now", "hero_eyebrow": "Private Swim Coaching · Orange County, CA", "hero_h1_1": "Train with", "hero_h1_2": "elite-level", "hero_h1_3": "instruction.", "hero_sub": "NCAA Division I swimmer at Columbia University. 2025 OC Swimmer of the Year. 15 years in the water, now coaching private students this summer in Irvine.", "hero_btn1": "Book a Lesson", "hero_btn2": "About Me", "stat1_label": "Scholastic All-American", "stat2_label": "Olympic Trials Standards", "stat3_label": "Hours Coached", "stat4_label": "OC Swimmer of the Year '25", "about_eyebrow": "About Me", "about_title": "Built for this — in and out of the water.", "about_p1": "I've been in the water since I was 5 years old — nearly 15 years of competitive swimming that took me from age group meets in Irvine all the way to USA Swimming National Championships and the Ivy League.", "about_p2": "I'm currently a rising sophomore on the Columbia University men's swimming team, competing in the Ivy League while maintaining a 3.75 GPA. Growing up, I swam for the Irvine Novaquatics and captained the Northwood High School team, where we won the CIF State Championship my senior year. Along the way I earned 16 Winter Junior National cuts (SCY & LCM), 16 Summer Junior National cuts (SCY & LCM), and 6 USA Swimming National cuts, and achieved the Olympic Trials time standards in both the 200 free and 200 fly.", "about_p3": "Coaching is something I genuinely love. I've worked with swimmers of all ages — from kids who are afraid to put their face in the water to competitive club swimmers chasing faster splits. I'm patient, positive, and I know how to break down technique in a way that actually clicks. My goal is simple: every swimmer leaves the lesson better than they arrived.", "creds_eyebrow": "Credentials", "creds_title": "The résumé speaks for itself.", "creds_lead": "I've competed at every level of American swimming, from high school championships to national meets, and I bring that experience directly to your swimmer.", "services_eyebrow": "Lesson Types", "services_title": "Every swimmer, every level.", "services_lead": "From a child's first lap to competitive race prep, I tailor every lesson to where you are and where you want to go.", "pricing_eyebrow": "Rates", "pricing_title": "Simple, transparent pricing.", "pricing_lead": "No hidden fees. Choose the lesson length that fits your swimmer's goals and attention span.", "testimonials_eyebrow": "Testimonials", "testimonials_title": "What parents say.", "faq_eyebrow": "FAQ", "faq_title": "Common questions.", "area_eyebrow": "Service Area", "area_title": "Available across Orange County.", "area_lead": "Lessons are held at Forest Glen Pool in Irvine. Conveniently located and easily accessible from across Orange County.", "booking_eyebrow": "Get Started", "booking_title": "Ready to book?", "booking_lead": "Spots fill up fast during summer. Reach out today to lock in your swimmer's first lesson.", "step1_title": "Reach out", "step1_text": "text or email with your swimmer's age, level, and goals.", "step2_title": "Pick your time", "step2_text": "choose from available slots using the booking calendar.", "step3_title": "Confirm and swim", "step3_text": "show up to Forest Glen Pool and payment is collected at the lesson via Venmo, Zelle, or cash.", "email_btn": "Email to Book", "text_direct": "Or text directly:", "calendly_title": "Book a time online", "calendly_sub": "Use the calendar to pick a slot that works for you. No back-and-forth needed.", "calendly_btn": "View Available Times"}, "zh": {"nav_about": "关于我", "nav_lessons": "课程", "nav_pricing": "价格", "nav_faq": "常见问题", "nav_watch": "观看游泳视频", "nav_book": "立即预约", "hero_eyebrow": "私人游泳教学 · 加州橙县", "hero_h1_1": "接受", "hero_h1_2": "精英级别", "hero_h1_3": "专业指导。", "hero_sub": "哥伦比亚大学NCAA一级游泳运动员。2025年橙县年度游泳运动员。15年竞技游泳经验，现于尔湾提供私人教学服务。", "hero_btn1": "预约课程", "hero_btn2": "关于我", "stat1_label": "学术全美荣誉", "stat2_label": "奥运选拔赛达标", "stat3_label": "教学时数", "stat4_label": "2025橙县年度游泳员", "about_eyebrow": "关于我", "about_title": "为游泳而生。", "about_p1": "我从5岁开始游泳，近15年的竞技游泳生涯让我从尔湾的少年赛事一路走到美国游泳全国锦标赛和常春藤联盟。", "about_p2": "我目前是哥伦比亚大学男子游泳队的大二学生，在常春藤联盟参赛，同时保持3.75的GPA。我曾为尔湾Novaquatics游泳队效力，并担任Northwood高中游泳队队长，带领球队夺得CIF州冠军。我共获得16个冬季青少年全国标准、16个夏季青少年全国标准、6个全国锦标赛标准，并达到200自由泳和200蝶泳的奥运选拔赛时间标准。", "about_p3": "我真心热爱教学。我曾指导各年龄段的游泳者——从害怕把脸放进水里的孩子，到追求更快成绩的竞技俱乐部游泳者。我耐心、积极，善于用易懂的方式讲解技术要点。我的目标很简单：每位学员在离开时都比来时进步了。", "creds_eyebrow": "资历认证", "creds_title": "成绩记录一目了然。", "creds_lead": "我在美国游泳各级别赛事中积累了丰富经验，从高中锦标赛到全国赛事，并将这些经验直接带给您的孩子。", "services_eyebrow": "课程类型", "services_title": "适合每位游泳者，每个水平。", "services_lead": "从孩子的第一次游泳到竞技备赛，我为每位学员量身定制课程。", "pricing_eyebrow": "收费标准", "pricing_title": "透明简单的定价。", "pricing_lead": "无隐藏费用。根据孩子的目标和注意力选择合适的课程时长。", "testimonials_eyebrow": "家长评价", "testimonials_title": "家长们的反馈。", "faq_eyebrow": "常见问题", "faq_title": "常见问题解答。", "area_eyebrow": "服务区域", "area_title": "覆盖整个橙县。", "area_lead": "课程在尔湾Forest Glen游泳池举行，位置便利，橙县各地均可轻松前往。", "booking_eyebrow": "开始预约", "booking_title": "准备好预约了吗？", "booking_lead": "暑期名额有限，请尽快联系锁定您孩子的第一节课。", "step1_title": "联系我", "step1_text": "发短信或邮件告知孩子的年龄、水平和目标。", "step2_title": "选择时间", "step2_text": "通过预约日历选择合适的时间段。", "step3_title": "确认并游泳", "step3_text": "前往Forest Glen游泳池，课后通过Venmo、Zelle或现金付款。", "email_btn": "发邮件预约", "text_direct": "或直接发短信：", "calendly_title": "在线预约时间", "calendly_sub": "使用日历选择适合您的时间段，无需来回沟通。", "calendly_btn": "查看可用时间"}, "es": {"nav_about": "Sobre mí", "nav_lessons": "Lecciones", "nav_pricing": "Precios", "nav_faq": "Preguntas", "nav_watch": "Ver mis videos", "nav_book": "Reservar ahora", "hero_eyebrow": "Clases privadas de natación · Orange County, CA", "hero_h1_1": "Entrena con", "hero_h1_2": "instrucción", "hero_h1_3": "de élite.", "hero_sub": "Nadador NCAA División I en la Universidad de Columbia. Nadador del año de OC 2025. 15 años en el agua, ahora enseñando en Irvine este verano.", "hero_btn1": "Reservar una clase", "hero_btn2": "Sobre mí", "stat1_label": "Académico All-American", "stat2_label": "Estándares Olímpicos", "stat3_label": "Horas de enseñanza", "stat4_label": "Nadador del año OC '25", "about_eyebrow": "Sobre mí", "about_title": "Hecho para esto.", "about_p1": "He estado en el agua desde los 5 años — casi 15 años de natación competitiva que me llevaron desde competencias juveniles en Irvine hasta el Campeonato Nacional de USA Swimming y la Ivy League.", "about_p2": "Actualmente soy estudiante de segundo año en el equipo de natación masculino de Columbia University, compitiendo en la Ivy League mientras mantengo un GPA de 3.75. Nadé para los Irvine Novaquatics y fui capitán del equipo de Northwood High School, donde ganamos el Campeonato Estatal CIF. Logré 16 clasificaciones para el Campeonato Junior de Invierno, 16 para el de Verano, 6 para el Nacional, y alcancé los estándares de los Juegos Olímpicos en 200 libre y 200 mariposa.", "about_p3": "Enseñar es algo que genuinamente amo. He trabajado con nadadores de todas las edades. Soy paciente, positivo y sé cómo explicar la técnica de manera que realmente se entienda. Mi objetivo es simple: cada nadador sale mejor de lo que llegó.", "creds_eyebrow": "Credenciales", "creds_title": "El historial habla por sí solo.", "creds_lead": "He competido en todos los niveles de la natación americana y traigo esa experiencia directamente a tu nadador.", "services_eyebrow": "Tipos de clases", "services_title": "Todo nadador, todo nivel.", "services_lead": "Desde la primera vuelta hasta la preparación competitiva, adapto cada clase a donde estás y a donde quieres llegar.", "pricing_eyebrow": "Tarifas", "pricing_title": "Precios simples y transparentes.", "pricing_lead": "Sin cargos ocultos. Elige la duración de la clase que mejor se adapte.", "testimonials_eyebrow": "Testimonios", "testimonials_title": "Lo que dicen los padres.", "faq_eyebrow": "Preguntas frecuentes", "faq_title": "Preguntas comunes.", "area_eyebrow": "Área de servicio", "area_title": "Disponible en todo Orange County.", "area_lead": "Las clases se realizan en Forest Glen Pool en Irvine, convenientemente ubicado y accesible desde todo Orange County.", "booking_eyebrow": "Comenzar", "booking_title": "¿Listo para reservar?", "booking_lead": "Los cupos se llenan rápido en verano. Contáctame hoy para asegurar la primera clase.", "step1_title": "Contáctame", "step1_text": "envía un mensaje o correo con la edad, nivel y objetivos de tu nadador.", "step2_title": "Elige tu horario", "step2_text": "selecciona entre los horarios disponibles usando el calendario.", "step3_title": "Confirma y nada", "step3_text": "preséntate en Forest Glen Pool y el pago se realiza en la clase.", "email_btn": "Correo para reservar", "text_direct": "O envía un mensaje:", "calendly_title": "Reserva en línea", "calendly_sub": "Usa el calendario para elegir el horario que te convenga.", "calendly_btn": "Ver horarios disponibles"}, "ko": {"nav_about": "소개", "nav_lessons": "레슨", "nav_pricing": "가격", "nav_faq": "자주 묻는 질문", "nav_watch": "수영 영상 보기", "nav_book": "지금 예약", "hero_eyebrow": "프라이빗 수영 코칭 · 캘리포니아 오렌지 카운티", "hero_h1_1": "엘리트 수준의", "hero_h1_2": "전문적인", "hero_h1_3": "지도를 받으세요.", "hero_sub": "컬럼비아 대학교 NCAA 1부 리그 수영 선수. 2025년 OC 올해의 수영 선수. 15년의 수영 경력, 이번 여름 어바인에서 개인 레슨 진행 중.", "hero_btn1": "레슨 예약", "hero_btn2": "소개", "stat1_label": "학술 전미 선발", "stat2_label": "올림픽 선발전 기준 달성", "stat3_label": "코칭 시간", "stat4_label": "2025 OC 올해의 수영 선수", "about_eyebrow": "소개", "about_title": "물 안팎에서 이것을 위해 태어났습니다.", "about_p1": "저는 5살부터 수영을 시작해 약 15년간 경쟁 수영을 해왔으며, 어바인의 유소년 대회부터 미국 수영 전국 선수권 대회와 아이비 리그까지 올라왔습니다.", "about_p2": "현재 컬럼비아 대학교 남자 수영팀의 2학년으로 GPA 3.75를 유지하며 아이비 리그에서 경쟁하고 있습니다. 어바인 Novaquatics와 Northwood 고등학교 수영팀 주장으로서 CIF 주 챔피언십을 이끌었습니다. 동계·하계 주니어 전국 각 16개, 전국 선수권 6개 기준을 달성했으며, 200 자유형과 200 접영에서 올림픽 선발전 기준을 달성했습니다.", "about_p3": "저는 코칭을 진심으로 사랑합니다. 물에 얼굴 넣기를 두려워하는 아이부터 경쟁 선수까지 모든 연령의 수영 선수들과 함께했습니다. 인내심 있고 긍정적이며 기술을 쉽게 설명합니다. 목표는 단순합니다: 모든 학생이 레슨 후 더 나아진 모습으로 돌아가는 것입니다.", "creds_eyebrow": "자격 및 경력", "creds_title": "경력이 모든 것을 말해줍니다.", "creds_lead": "미국 수영의 모든 수준에서 경쟁했으며, 그 경험을 여러분의 수영 선수에게 직접 전달합니다.", "services_eyebrow": "레슨 유형", "services_title": "모든 수영 선수, 모든 수준.", "services_lead": "어린이의 첫 수영부터 경쟁 대회 준비까지, 현재 위치와 목표에 맞게 맞춤 구성합니다.", "pricing_eyebrow": "요금", "pricing_title": "간단하고 투명한 가격.", "pricing_lead": "숨겨진 비용 없음. 목표에 맞는 레슨 시간을 선택하세요.", "testimonials_eyebrow": "추천사", "testimonials_title": "부모님들의 이야기.", "faq_eyebrow": "자주 묻는 질문", "faq_title": "일반적인 질문들.", "area_eyebrow": "서비스 지역", "area_title": "오렌지 카운티 전역 이용 가능.", "area_lead": "레슨은 어바인 Forest Glen Pool에서 진행됩니다. 오렌지 카운티 전역에서 쉽게 접근할 수 있습니다.", "booking_eyebrow": "시작하기", "booking_title": "예약할 준비가 되셨나요?", "booking_lead": "여름철에는 자리가 빠르게 채워집니다. 오늘 연락하여 첫 레슨을 확보하세요.", "step1_title": "연락하기", "step1_text": "수영 선수의 나이, 수준, 목표를 문자 또는 이메일로 알려주세요.", "step2_title": "시간 선택", "step2_text": "예약 캘린더를 사용하여 가능한 시간대를 선택하세요.", "step3_title": "확인 및 수영", "step3_text": "Forest Glen Pool에 오시면 레슨 후 Venmo, Zelle 또는 현금으로 결제합니다.", "email_btn": "이메일로 예약", "text_direct": "또는 문자 직접 보내기:", "calendly_title": "온라인 예약", "calendly_sub": "캘린더를 사용하여 원하는 시간을 선택하세요.", "calendly_btn": "가능한 시간 보기"}, "vi": {"nav_about": "Giới thiệu", "nav_lessons": "Bài học", "nav_pricing": "Giá cả", "nav_faq": "Câu hỏi", "nav_watch": "Xem tôi bơi", "nav_book": "Đặt lịch ngay", "hero_eyebrow": "Huấn luyện bơi lội riêng tư · Quận Cam, CA", "hero_h1_1": "Được huấn luyện", "hero_h1_2": "ở đẳng cấp", "hero_h1_3": "ưu tú.", "hero_sub": "Vận động viên bơi lội NCAA Hạng I tại Đại học Columbia. Vận động viên bơi lội OC của năm 2025. 15 năm kinh nghiệm, hiện đang dạy tại Irvine mùa hè này.", "hero_btn1": "Đặt lịch học", "hero_btn2": "Giới thiệu", "stat1_label": "Học sinh All-American", "stat2_label": "Đạt chuẩn Olympic Trials", "stat3_label": "Giờ huấn luyện", "stat4_label": "VĐV bơi lội OC năm 2025", "about_eyebrow": "Giới thiệu", "about_title": "Sinh ra để làm điều này.", "about_p1": "Tôi đã bơi lội từ khi 5 tuổi — gần 15 năm bơi lội cạnh tranh đã đưa tôi từ các giải đấu thiếu niên ở Irvine đến Giải Vô địch Quốc gia USA Swimming và Ivy League.", "about_p2": "Hiện tôi là sinh viên năm hai đội bơi lội nam tại Đại học Columbia, thi đấu tại Ivy League với GPA 3.75. Tôi từng bơi cho Irvine Novaquatics và làm đội trưởng đội bơi Northwood High School, nơi chúng tôi giành chức vô địch tiểu bang CIF. Tôi đạt 16 tiêu chuẩn Junior Quốc gia Mùa đông, 16 Mùa hè, 6 Quốc gia, và đạt tiêu chuẩn Olympic Trials ở 200 tự do và 200 bướm.", "about_p3": "Tôi thực sự yêu thích việc huấn luyện. Tôi đã làm việc với các vận động viên ở mọi lứa tuổi. Tôi kiên nhẫn, tích cực và biết cách phân tích kỹ thuật dễ hiểu. Mục tiêu của tôi đơn giản: mỗi học viên rời buổi học giỏi hơn khi đến.", "creds_eyebrow": "Thành tích", "creds_title": "Thành tích tự nói lên tất cả.", "creds_lead": "Tôi đã thi đấu ở mọi cấp độ bơi lội Mỹ và mang kinh nghiệm đó trực tiếp đến với vận động viên của bạn.", "services_eyebrow": "Loại bài học", "services_title": "Mọi vận động viên, mọi trình độ.", "services_lead": "Từ vòng bơi đầu tiên đến chuẩn bị thi đấu, tôi điều chỉnh mỗi buổi học phù hợp với bạn.", "pricing_eyebrow": "Học phí", "pricing_title": "Giá cả đơn giản, minh bạch.", "pricing_lead": "Không có phí ẩn. Chọn thời lượng bài học phù hợp.", "testimonials_eyebrow": "Nhận xét", "testimonials_title": "Phụ huynh nói gì.", "faq_eyebrow": "Câu hỏi thường gặp", "faq_title": "Các câu hỏi phổ biến.", "area_eyebrow": "Khu vực phục vụ", "area_title": "Phục vụ toàn Quận Cam.", "area_lead": "Các buổi học được tổ chức tại Forest Glen Pool ở Irvine, thuận tiện và dễ dàng tiếp cận từ khắp Quận Cam.", "booking_eyebrow": "Bắt đầu", "booking_title": "Sẵn sàng đặt lịch?", "booking_lead": "Chỗ lấp đầy nhanh vào mùa hè. Liên hệ ngay hôm nay để đặt buổi học đầu tiên.", "step1_title": "Liên hệ", "step1_text": "nhắn tin hoặc email với độ tuổi, trình độ và mục tiêu của vận động viên.", "step2_title": "Chọn thời gian", "step2_text": "chọn từ các khung giờ có sẵn bằng lịch đặt chỗ.", "step3_title": "Xác nhận và bơi", "step3_text": "đến Forest Glen Pool và thanh toán tại buổi học qua Venmo, Zelle hoặc tiền mặt.", "email_btn": "Email để đặt lịch", "text_direct": "Hoặc nhắn tin trực tiếp:", "calendly_title": "Đặt lịch trực tuyến", "calendly_sub": "Dùng lịch để chọn khung giờ phù hợp.", "calendly_btn": "Xem thời gian có sẵn"}, "ja": {"nav_about": "自己紹介", "nav_lessons": "レッスン", "nav_pricing": "料金", "nav_faq": "よくある質問", "nav_watch": "泳ぐ動画を見る", "nav_book": "今すぐ予約", "hero_eyebrow": "プライベートスイミングコーチング · オレンジ郡", "hero_h1_1": "エリートレベルの", "hero_h1_2": "本格的な", "hero_h1_3": "指導を受けよう。", "hero_sub": "コロンビア大学NCAAディビジョンI水泳選手。2025年OC年間最優秀スイマー。15年の競泳経験、今夏アーバインでプライベートレッスン提供中。", "hero_btn1": "レッスンを予約", "hero_btn2": "自己紹介", "stat1_label": "学業All-American", "stat2_label": "オリンピック選考基準達成", "stat3_label": "コーチング時間", "stat4_label": "2025 OC年間最優秀スイマー", "about_eyebrow": "自己紹介", "about_title": "水の中でも外でも、この道のために。", "about_p1": "5歳から水泳を始め、約15年間の競泳生活でアーバインの年齢別大会からUSAスイミング全国選手権とアイビーリーグまで上り詰めました。", "about_p2": "現在はコロンビア大学男子水泳チームの2年生として、GPA3.75を維持しながらアイビーリーグで競っています。アーバインNovaquaticsに所属し、Northwood高校のキャプテンとしてCIF州チャンピオンシップ優勝に貢献。冬季・夏季ジュニア全国標準各16個、全国選手権標準6個を達成し、200自由形と200バタフライでオリンピック選考基準タイムを達成。", "about_p3": "コーチングは心から好きです。あらゆる年齢の選手と取り組んできました。忍耐強く、前向きで、わかりやすく技術を伝えます。目標はシンプルです：すべての選手がレッスン後に上達して帰ること。", "creds_eyebrow": "実績・資格", "creds_title": "実績がすべてを語ります。", "creds_lead": "米国水泳のあらゆるレベルで競い、その経験を直接お子様に伝えます。", "services_eyebrow": "レッスンの種類", "services_title": "すべてのスイマー、すべてのレベルに対応。", "services_lead": "初めての一泳ぎから競技大会の準備まで、目標に合わせてカスタマイズします。", "pricing_eyebrow": "料金", "pricing_title": "シンプルで透明な料金設定。", "pricing_lead": "隠れた費用一切なし。目標に合ったレッスン時間をお選びください。", "testimonials_eyebrow": "保護者の声", "testimonials_title": "保護者からのコメント。", "faq_eyebrow": "よくある質問", "faq_title": "よくいただくご質問。", "area_eyebrow": "サービスエリア", "area_title": "オレンジ郡全域で利用可能。", "area_lead": "レッスンはアーバインのForest Glen Poolで行われます。オレンジ郡全域から簡単にアクセスできます。", "booking_eyebrow": "始めましょう", "booking_title": "予約の準備はできていますか？", "booking_lead": "夏はすぐに枠が埋まります。今日連絡してお子様の最初のレッスンを確保してください。", "step1_title": "お問い合わせ", "step1_text": "スイマーの年齢、レベル、目標をメールまたはテキストでお知らせください。", "step2_title": "時間を選ぶ", "step2_text": "予約カレンダーで利用可能な枠からお選びください。", "step3_title": "確認して泳ぐ", "step3_text": "Forest Glen Poolにお越しいただき、レッスン後にVenmo、Zelle、または現金でお支払いください。", "email_btn": "メールで予約", "text_direct": "または直接テキストで：", "calendly_title": "オンライン予約", "calendly_sub": "カレンダーで都合の良い時間を選んでください。", "calendly_btn": "空き時間を確認"}};
+let currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  const t = translations[lang];
+  
+  // Update all data-i18n elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key]) el.textContent = t[key];
+  });
+
+  // Update hero h1 specially (has em tag)
+  document.querySelector('.hero h1').innerHTML = t.hero_h1_1 + '<br><em>' + t.hero_h1_2 + '</em><br>' + t.hero_h1_3;
+
+  // Update about paragraphs
+  const aboutPs = document.querySelectorAll('.about-content p[style]');
+  if (aboutPs[0]) aboutPs[0].textContent = t.about_p1;
+  if (aboutPs[1]) aboutPs[1].textContent = t.about_p2;
+  if (aboutPs[2]) aboutPs[2].textContent = t.about_p3;
+
+  // Update creds lead
+  const credsLead = document.querySelector('#credentials .section-lead');
+  if (credsLead) credsLead.textContent = t.creds_lead;
+
+  // Update credentials title
+  const credsTitle = document.querySelector('#credentials .section-title');
+  if (credsTitle) credsTitle.textContent = t.creds_title;
+
+  // Update services lead
+  const servicesLead = document.querySelector('#services .section-lead');
+  if (servicesLead) servicesLead.textContent = t.services_lead;
+
+  // Update pricing lead
+  const pricingLead = document.querySelector('#pricing .section-lead');
+  if (pricingLead) pricingLead.textContent = t.pricing_lead;
+
+  // Update area lead
+  const areaLead = document.querySelector('#area .section-lead');
+  if (areaLead) areaLead.textContent = t.area_lead;
+
+  // Update booking lead
+  const bookingLead = document.querySelector('#booking .section-lead');
+  if (bookingLead) bookingLead.textContent = t.booking_lead;
+
+  // Update booking steps
+  const steps = document.querySelectorAll('.booking-steps li');
+  if (steps[0]) steps[0].querySelector('.step-text').innerHTML = '<strong>' + t.step1_title + '</strong> — ' + t.step1_text;
+  if (steps[1]) steps[1].querySelector('.step-text').innerHTML = '<strong>' + t.step2_title + '</strong> — ' + t.step2_text;
+  if (steps[2]) steps[2].querySelector('.step-text').innerHTML = '<strong>' + t.step3_title + '</strong> — ' + t.step3_text;
+
+  // Update text directly line
+  const contactLine = document.querySelector('.contact-line');
+  if (contactLine) contactLine.innerHTML = t.text_direct + ' <a href="tel:+17143214889">(714) 321-4889</a>';
+
+  // Update lang button label
+  const labels = {'en':'EN','zh':'中文','es':'ES','ko':'한국어','vi':'VI','ja':'日本語'};
+  document.querySelector('.lang-btn').textContent = '🌐 ' + labels[lang];
+
+  // Update active state
+  document.querySelectorAll('.lang-option').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('onclick').includes("'" + lang + "'"));
+  });
+
+  // Close dropdown
+  document.getElementById('langDropdown').classList.remove('open');
+  
+  // Update html lang attribute
+  document.documentElement.lang = lang;
+}
+
+function toggleLangDropdown() {
+  document.getElementById('langDropdown').classList.toggle('open');
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.lang-switcher')) {
+    document.getElementById('langDropdown').classList.remove('open');
+  }
+});
+</script>
 </body>
 </html>
