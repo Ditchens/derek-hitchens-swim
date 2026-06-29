@@ -217,6 +217,9 @@
   @media (max-width: 768px) {
     nav { padding: 14px 20px; }
     nav a:not(.nav-book) { display: none; }
+    .lang-switcher { margin-left: 8px; }
+    .lang-btn { font-size: 11px; padding: 5px 9px; }
+    .lang-dropdown { right: 0; min-width: 140px; top: calc(100% + 4px); }
     section { padding: 64px 20px; }
     .hero { padding: 100px 20px 60px; }
     .hero-inner { grid-template-columns: 1fr; gap: 40px; }
@@ -235,13 +238,12 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo">DEREK <span>HITCHENS</span></div>
-  <div>
+  <div style="display:flex;align-items:center;gap:8px;">
     <a href="#about" data-i18n="nav_about">About</a>
     <a href="#services" data-i18n="nav_lessons">Lessons</a>
     <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
     <a href="#faq" data-i18n="nav_faq">FAQ</a>
-    <a href="https://www.youtube.com/@Hitchens_Swims/videos" target="_blank" data-i18n="nav_watch">Watch Me Swim</a><a href="#booking" class="nav-book" data-i18n="nav_book">Book Now</a>
-
+    <a href="https://www.youtube.com/@Hitchens_Swims/videos" target="_blank" data-i18n="nav_watch">Watch Me Swim</a>
     <div class="lang-switcher">
       <button class="lang-btn" onclick="toggleLangDropdown()">🌐 EN</button>
       <div class="lang-dropdown" id="langDropdown">
@@ -253,6 +255,7 @@
         <button class="lang-option" onclick="setLang('ja')">🇯🇵 日本語</button>
       </div>
     </div>
+    <a href="#booking" class="nav-book" data-i18n="nav_book">Book Now</a>
   </div>
 </nav>
 
